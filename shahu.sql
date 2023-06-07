@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2023 at 04:13 PM
+-- Generation Time: Jun 07, 2023 at 03:32 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -41,7 +41,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `created_at`) VALUES
-(1, 'Md Sabbir Ahmed', 'md.sabbir073@gmail.com', '$2y$10$R2UQMb9jk8PjuAGioBrPF.DMkm/q89RsMaVsYTyi4J10Gv8T0s3My', 'admin', '2023-06-06 18:16:58');
+(1, 'Md Sabbir Ahmed', 'md.sabbir073@gmail.com', '$2y$10$R2UQMb9jk8PjuAGioBrPF.DMkm/q89RsMaVsYTyi4J10Gv8T0s3My', 'admin', '2023-06-06 18:16:58'),
+(2, 'Shahriar', 'shahriar@abc.com', '$2y$10$iIdR.G2XWAs8k2pH3693XOpNSb30lEI3MAtZuWux9nWCefeQn/LD.', 'user', '2023-06-07 19:30:11');
 
 -- --------------------------------------------------------
 
@@ -87,7 +88,7 @@ ALTER TABLE `website_setting`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `website_setting`

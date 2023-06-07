@@ -68,8 +68,8 @@ include("config.php");
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">View Users</a>
-                                    <a class="nav-link" href="#">Add User</a>
+                                    <a class="nav-link" href="all-user.php">View Users</a>
+                                    <a class="nav-link" href="add-user.php">Add User</a>
                                 </nav>
                             </div>
                             <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

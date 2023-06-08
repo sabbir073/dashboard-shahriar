@@ -2,6 +2,10 @@
 
 <?php
 
+if (!$_SESSION["role"] || $_SESSION["role"] !== "admin") {
+    exit;
+}
+
 $success = [];
 $errors = [];
 

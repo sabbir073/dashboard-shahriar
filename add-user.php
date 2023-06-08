@@ -1,6 +1,10 @@
 <?php include('header.php');?>
 
 <?php
+if (!$_SESSION["role"] || $_SESSION["role"] !== "admin") {
+    exit;
+}
+
 if(isset($_POST["submit"])){
     $errors= array();
     $success = array();
@@ -14,6 +18,9 @@ if(isset($_POST["submit"])){
 
     $userrole = stripslashes($_REQUEST['userrole']);
     $userrole = mysqli_real_escape_string($link, $userrole);
+
+    $balanceu = stripslashes($_REQUEST['balanceu']);
+    $balanceu = mysqli_real_escape_string($link, $balanceu);
 
     $userpassword = stripslashes($_REQUEST['userpassword']);
     $userpassword = mysqli_real_escape_string($link, $userpassword);
@@ -36,7 +43,7 @@ if(isset($_POST["submit"])){
 
         $userpassword = password_hash($userpassword, PASSWORD_DEFAULT);
 
-        $query    = "INSERT INTO `user`(`name`, `email`, `role`, `password`) VALUES ('$name','$useremail','$userrole','$userpassword')";
+        $query    = "INSERT INTO `user`(`name`, `email`, `role`, `balance`, `password`) VALUES ('$name','$useremail','$userrole', '$balanceu', '$userpassword')";
         $result   = mysqli_query($link, $query);
 
         if($result == true){
@@ -98,6 +105,10 @@ if(isset($_POST["submit"])){
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="balanceu" class="col-form-label pt-0">Balance</label>
+                                <input type="number" step="0.01" min="0" class="form-control" id="balanceu" name="balanceu" placeholder="User Balance" required>
                             </div>
                             <div class="mb-3">
                                 <label for="userpassword" class="col-form-label pt-0">Password</label>

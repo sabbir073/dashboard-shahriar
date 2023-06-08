@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2023 at 03:32 PM
+-- Generation Time: Jun 08, 2023 at 04:15 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pay_options`
+--
+
+CREATE TABLE `pay_options` (
+  `id` int(11) NOT NULL,
+  `pay_name` varchar(50) NOT NULL,
+  `pay_address` varchar(100) NOT NULL,
+  `pay_instruction` varchar(255) NOT NULL,
+  `pay_image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pay_options`
+--
+
+INSERT INTO `pay_options` (`id`, `pay_name`, `pay_address`, `pay_instruction`, `pay_image`) VALUES
+(3, 'Paypal', 'paypal@gmail.com', 'send money in paypal', 'rsz_brand.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -33,6 +54,7 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `role` varchar(50) NOT NULL,
+  `balance` decimal(10,2) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,9 +62,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `created_at`) VALUES
-(1, 'Md Sabbir Ahmed', 'md.sabbir073@gmail.com', '$2y$10$R2UQMb9jk8PjuAGioBrPF.DMkm/q89RsMaVsYTyi4J10Gv8T0s3My', 'admin', '2023-06-06 18:16:58'),
-(2, 'Shahriar', 'shahriar@abc.com', '$2y$10$iIdR.G2XWAs8k2pH3693XOpNSb30lEI3MAtZuWux9nWCefeQn/LD.', 'user', '2023-06-07 19:30:11');
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `balance`, `created_at`) VALUES
+(1, 'Md Sabbir Ahmed', 'md.sabbir073@gmail.com', '$2y$10$R2UQMb9jk8PjuAGioBrPF.DMkm/q89RsMaVsYTyi4J10Gv8T0s3My', 'admin', '0.00', '2023-06-06 18:16:58'),
+(7, 'sobuj', 'abc@abcc.com', '$2y$10$nHvYuDhTCAf2bO5y.UYH2e4WLgSue8kAvyWNhDQpUTeZfN6AUP1am', 'user', '50.47', '2023-06-08 17:11:37'),
+(8, 'alamin', 'alamin@abc.co', '$2y$10$a4hvncSgetGH9bEK3DsLkusmcKlpqIyUUgAbYHd2XseWrlAsP5ezG', 'user', '95.10', '2023-06-08 17:35:55');
 
 -- --------------------------------------------------------
 
@@ -69,6 +92,12 @@ INSERT INTO `website_setting` (`id`, `logo_image_name`, `background_image_name`,
 --
 
 --
+-- Indexes for table `pay_options`
+--
+ALTER TABLE `pay_options`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -85,10 +114,16 @@ ALTER TABLE `website_setting`
 --
 
 --
+-- AUTO_INCREMENT for table `pay_options`
+--
+ALTER TABLE `pay_options`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `website_setting`

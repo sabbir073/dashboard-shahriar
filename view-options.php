@@ -1,16 +1,14 @@
 <?php include('header.php');?>
-
 <?php
 if (!$_SESSION["role"] || $_SESSION["role"] !== "admin") {
     exit;
 }
 ?>
-
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Welcome <?php echo $_SESSION["name"];?>!</h1>
         <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">View all User</li>
+        <li class="breadcrumb-item active">View all Payment Options</li>
         </ol>
         <div class="card mb-4">
             <!-- <div class="card-header">
@@ -27,16 +25,16 @@ if (!$_SESSION["role"] || $_SESSION["role"] !== "admin") {
                                     <a href="#" class="datatable-sorter">ID</a>
                                 </th>
                                 <th data-sortable="true">
-                                    <a href="#" class="datatable-sorter">Name</a>
+                                    <a href="#" class="datatable-sorter">Option Name</a>
                                 </th>
                                 <th data-sortable="true">
-                                    <a href="#" class="datatable-sorter">Email</a>
+                                    <a href="#" class="datatable-sorter">Adress</a>
                                 </th>
                                 <th data-sortable="true">
-                                    <a href="#" class="datatable-sorter">Role</a>
+                                    <a href="#" class="datatable-sorter">Instruction</a>
                                 </th>
                                 <th data-sortable="true">
-                                    <a href="#" class="datatable-sorter">Balance</a>
+                                    <a href="#" class="datatable-sorter">QR Code</a>
                                 </th>
                                 <th data-sortable="true">
                                     <a href="#" class="datatable-sorter">Action</a>
@@ -45,22 +43,19 @@ if (!$_SESSION["role"] || $_SESSION["role"] !== "admin") {
                         </thead>
                         <tbody>
                         <?php
-                        $sql = "SELECT `id`, `name`, `email`, `role`, `balance` FROM `user` ";
+                        $sql = "SELECT * FROM `pay_options` ";
                         if ($result = $link->query($sql)) {
                             /* fetch associative array */
                             while ($row = $result->fetch_assoc()) {
                                 echo '<tr>
                                         <td>'.$row["id"].'</td>
-                                        <td>'.$row["name"].'</td>
-                                        <td>'.$row["email"].'</td>
-                                        <td>'.$row["role"].'</td>
-                                        <td>'.$row["balance"].'</td>
+                                        <td>'.$row["pay_name"].'</td>
+                                        <td>'.$row["pay_address"].'</td>
+                                        <td>'.$row["pay_instruction"].'</td>
+                                        <td><img style="width:100px; height:100px;" src="assets/img/'.$row["pay_image"].'"></td>
                                         <td>
-                                            <a href="delete-user.php?id='.$row["id"].'" class="btn btn-danger btn-sm deluser" onclick="return confirmDelete();">
+                                            <a href="delete-option.php?id='.$row["id"].'" class="btn btn-danger btn-sm deluser" onclick="return confirmDelete();">
                                             <i class="fas fa-trash"></i> Delete
-                                            </a>
-                                            <a href="edit-user.php?id='.$row["id"].'" class="btn btn-success btn-sm edituser">
-                                            <i class="fas fa-trash"></i> Edit
                                             </a>
                                         </td>
                                     </tr>';
@@ -78,7 +73,7 @@ if (!$_SESSION["role"] || $_SESSION["role"] !== "admin") {
 </main>
 <script>
 function confirmDelete() {
-    return confirm("Are you sure you want to delete this user?");
+    return confirm("Are you sure you want to delete this option?");
 }
 </script>
 

@@ -91,6 +91,25 @@ if(isset($_POST["submit"])){
             <?php endif; ?>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="theme-form">
                     <div class="card-body">
+                                <?php if (!empty($errors)): ?>
+                            <div class="alert alert-danger">
+                                <ul class="list-group">
+                                    <?php foreach ($errors as $error): ?>
+                                        <li class="list-group-item list-group-item-danger"><?php echo $error; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($success)): ?>
+                            <div class="alert alert-success">
+                                <ul class="list-group">
+                                    <?php foreach ($success as $sc): ?>
+                                        <li class="list-group-item list-group-item-success"><?php echo $sc; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
                             <div class="mb-3">
                                 <label for="username" class="col-form-label pt-0">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" aria-describedby="name" placeholder="Name" required>

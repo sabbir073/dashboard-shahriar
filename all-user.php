@@ -60,7 +60,7 @@ if (!$_SESSION["role"] || $_SESSION["role"] !== "admin") {
                                             <i class="fas fa-trash"></i> Delete
                                             </a>
                                             <a href="edit-user.php?id='.$row["id"].'" class="btn btn-success btn-sm edituser">
-                                            <i class="fas fa-trash"></i> Edit
+                                            <i class="fas fa-pen"></i> Edit
                                             </a>
                                         </td>
                                     </tr>';

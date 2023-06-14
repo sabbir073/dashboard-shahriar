@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 04:15 PM
+-- Generation Time: Jun 14, 2023 at 03:19 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -24,6 +24,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `deposit`
+--
+
+CREATE TABLE `deposit` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `payment_type` varchar(50) NOT NULL,
+  `user_name` varchar(100) NOT NULL,
+  `mobile_email` varchar(100) NOT NULL,
+  `transaction_id` varchar(100) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Pending',
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `deposit`
+--
+
+INSERT INTO `deposit` (`id`, `user_id`, `payment_type`, `user_name`, `mobile_email`, `transaction_id`, `amount`, `status`, `date`) VALUES
+(1, '9', 'Bkash', 'sobuj', '01643059745', 'XVBGHTRS34', '1229.90', 'Approved', '2023-06-14 12:21:48'),
+(2, '9', 'Bkash', 'sobuj', '01643059745', 'XVBGHTRS34', '1450.29', 'Approved', '2023-06-14 12:23:31'),
+(3, '9', 'Bkash', 'sobuj', '01643059745', 'XVBGHTRS34', '50.00', 'Approved', '2023-06-14 13:17:10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pay_options`
 --
 
@@ -40,7 +67,9 @@ CREATE TABLE `pay_options` (
 --
 
 INSERT INTO `pay_options` (`id`, `pay_name`, `pay_address`, `pay_instruction`, `pay_image`) VALUES
-(3, 'Paypal', 'paypal@gmail.com', 'send money in paypal', 'rsz_brand.png');
+(3, 'Paypal', 'paypal@gmail.com', 'send money in paypal', 'rsz_brand.png'),
+(5, 'Payoneer', 'payoneer@gmail.com', 'Send in P2P', 'rsz_modern-residential-building-min.jpg'),
+(6, 'Bkash', '01643059745', 'Please do send money', 'rsz_modern-residential-building-min.jpg');
 
 -- --------------------------------------------------------
 
@@ -64,8 +93,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `balance`, `created_at`) VALUES
 (1, 'Md Sabbir Ahmed', 'md.sabbir073@gmail.com', '$2y$10$R2UQMb9jk8PjuAGioBrPF.DMkm/q89RsMaVsYTyi4J10Gv8T0s3My', 'admin', '0.00', '2023-06-06 18:16:58'),
-(7, 'sobuj', 'abc@abcc.com', '$2y$10$nHvYuDhTCAf2bO5y.UYH2e4WLgSue8kAvyWNhDQpUTeZfN6AUP1am', 'user', '50.47', '2023-06-08 17:11:37'),
-(8, 'alamin', 'alamin@abc.co', '$2y$10$a4hvncSgetGH9bEK3DsLkusmcKlpqIyUUgAbYHd2XseWrlAsP5ezG', 'user', '95.10', '2023-06-08 17:35:55');
+(9, 'sobuj', 'sobuj@gmail.com', '$2y$10$JuBOCyo3VPgf/OluHF/MfOLYpowRN/CoxCgvTGD0fiadQ2WXIExi6', 'user', '1279.90', '2023-06-14 16:19:49');
 
 -- --------------------------------------------------------
 
@@ -85,11 +113,17 @@ CREATE TABLE `website_setting` (
 --
 
 INSERT INTO `website_setting` (`id`, `logo_image_name`, `background_image_name`, `company_name`) VALUES
-(1, 'S STAR FAIR LOGOO.png', 'rsz_relax-area-hotel.jpg', 'Sobuj Company');
+(1, 'S STAR FAIR LOGOO.png', 'rsz_relax-area-hotel.jpg', 'Abc Company Ltd.');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `deposit`
+--
+ALTER TABLE `deposit`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pay_options`
@@ -114,16 +148,22 @@ ALTER TABLE `website_setting`
 --
 
 --
+-- AUTO_INCREMENT for table `deposit`
+--
+ALTER TABLE `deposit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `pay_options`
 --
 ALTER TABLE `pay_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `website_setting`
